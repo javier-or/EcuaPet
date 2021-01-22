@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".miperfil">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="MI PERFIL"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="62dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:text="Foto"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageProfile"
+                android:layout_width="316dp"
+                android:layout_height="176dp"
+                android:textAlignment="center"
+                app:srcCompat="@drawable/profile" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/cameraRegistro"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="180dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:onClick="selectImage"
+                android:src="@drawable/camera" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textVi111"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="Nombres: " />
+
+            <EditText
+                android:id="@+id/etNombres"
+                android:layout_width="231dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/editTextBackground"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textVi112"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="Direccion:" />
+
+            <EditText
+                android:id="@+id/etDireccion"
+                android:layout_width="232dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="?attr/editTextBackground"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textVi113"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="Teléfono: " />
+
+            <EditText
+                android:id="@+id/etTelefono"
+                android:layout_width="232dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="?attr/editTextBackground"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textVi114"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="Celular: " />
+
+            <EditText
+                android:id="@+id/etCelular"
+                android:layout_width="232dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="?attr/editTextBackground"
+                android:ems="10"
+                android:inputType="textPersonName"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:text="Ubicación"
+                android:textSize="20sp" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView4"
+                android:layout_width="wrap_content"
+                android:layout_height="160dp"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textVi118"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAtras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="atras"
+                android:text="ATRAS" />
+
+
+            <Button
+                android:id="@+id/btnRegistrarse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:onClick="Actualizar"
+                android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+                android:text="Actualizar" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".registro">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="REGISTRO"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textVi111"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:text="Nombres: " />
+
+        <EditText
+            android:id="@+id/etNombres"
+            android:layout_width="231dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/editTextBackground"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textVi112"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:text="Direccion:" />
+
+        <EditText
+            android:id="@+id/etDireccion"
+            android:layout_width="232dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="?attr/editTextBackground"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textVi113"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:text="Teléfono: " />
+
+        <EditText
+            android:id="@+id/etTelefono"
+            android:layout_width="232dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="?attr/editTextBackground"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textVi114"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:text="Celular: " />
+
+        <EditText
+            android:id="@+id/etCelular"
+            android:layout_width="232dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="?attr/editTextBackground"
+            android:ems="10"
+            android:inputType="textPersonName"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textVi115"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:text="Email: " />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="232dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="?attr/editTextBackground"
+            android:ems="10"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textVi116"
+            android:layout_width="60dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:text="Contraseña:" />
+
+        <EditText
+            android:id="@+id/etContraseña"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textVi117"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:text="Confirmar Contraseña:" />
+
+        <EditText
+            android:id="@+id/etConfirmarContraseña"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/textVi118"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAtras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="volver"
+            android:text="ATRAS" />
+
+
+        <Button
+            android:id="@+id/btnRegistrarse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:onClick="Registrar"
+            android:text="REGISTRARSE" />
+    </LinearLayout>
+
+</LinearLayout>

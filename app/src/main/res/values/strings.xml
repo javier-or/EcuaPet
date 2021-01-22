@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">EcuaPet</string>
+
+    <string name="title_email"> Email</string>
+    <string name="title_passeord">Contraseña</string>
+    <string name="title_boton">Iniciar</string>
+    <string name="title_activity_miperfil">miperfil</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hostname">http://192.168.0.108:8000/apiv1</string>
+    <string name="basepath">http://192.168.0.108:8000</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="snippet">Punto</string>
+
+</resources>
