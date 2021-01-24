@@ -105,7 +105,7 @@ public class agregarMascota extends AppCompatActivity implements View.OnClickLis
                 "Dálmata","Dandie Dinmont Terrier","Dóberman",
                 "Galgo","Golden Retriever","Gran Boyero Suizo","Gran Danés","Husky Siberiano",
                 "Labradoodle","Labrador Retriever",
-                "Pastor Alemán","Pekinés","Pinscher","Pitbull","Pit bull terrier americano","Rottweiler",
+                "Pastor Alemán","Pekinés","Pinscher","Pitbull","Pit bull terrier americano","Pug o carlino","Rottweiler",
                 "San Bernardo","Schnauzer","Schipperke",
                 "Terranova","Terrier","Yorkshire Terrier"
         };

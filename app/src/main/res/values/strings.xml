@@ -10,8 +10,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="hostname">http://192.168.0.108:8000/apiv1</string>
-    <string name="basepath">http://192.168.0.108:8000</string>
+    <string name="hostname">http://192.168.1.54:8083/apiv1</string>
+    <string name="basepath">http://192.168.1.54:8083</string>
     <string name="title_activity_maps">Map</string>
     <string name="snippet">Punto</string>
 

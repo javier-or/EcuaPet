@@ -46,8 +46,7 @@
             android:background="?attr/editTextBackground"
             android:ems="10"
             android:hint="EMAIL"
-            android:inputType="textPersonName"
-            android:text="admin@crudbooster.com" />
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -71,8 +70,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="PASSWORD"
-            android:inputType="textPassword"
-            android:text="123456" />
+            android:inputType="textPassword" />
     </LinearLayout>
 
     <LinearLayout

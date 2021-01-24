@@ -17,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:gravity="center"
-            android:text="MIS MASCOTAS " />
+            android:text="MIS MASCOTAS "
+            android:textSize="24sp"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <LinearLayout
