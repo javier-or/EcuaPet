@@ -84,7 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="getLogin"
-            android:text="Ingresar" />
+            android:text="Ingresar"
+            android:background="@drawable/button_rounded"/>
 
 
 

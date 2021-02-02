@@ -320,7 +320,8 @@
                 android:gravity="center"
                 android:onClick="volver"
                 android:text="Volver"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/button_rounded"/>
 
             <Button
                 android:id="@+id/btnGuardar"
@@ -333,7 +334,8 @@
                 android:gravity="center"
                 android:onClick="GuardarMasc"
                 android:text="Guardar"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:background="@drawable/button_rounded"/>
 
 
         </LinearLayout>

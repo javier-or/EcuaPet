@@ -200,7 +200,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="atras"
-                android:text="ATRAS" />
+                android:text="ATRAS"
+                android:background="@drawable/button_rounded"/>
 
 
             <Button
@@ -210,7 +211,8 @@
                 android:layout_marginLeft="10dp"
                 android:onClick="Actualizar"
                 android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
-                android:text="Actualizar" />
+                android:text="Actualizar"
+                android:background="@drawable/button_rounded"/>
         </LinearLayout>
 
 

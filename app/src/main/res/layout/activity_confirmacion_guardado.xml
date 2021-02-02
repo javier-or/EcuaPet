@@ -69,7 +69,8 @@
             android:layout_width="wrap_content"
             android:onClick="imprimirQr"
             android:layout_height="wrap_content"
-            android:text="IMPRIMIR QR" />
+            android:text="IMPRIMIR QR"
+            android:background="@drawable/button_rounded"/>
     </LinearLayout>
 
     <LinearLayout
@@ -88,7 +89,8 @@
             android:gravity="center"
             android:onClick="inicio"
             android:text="Volver"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:background="@drawable/button_rounded"/>
     </LinearLayout>
 
 </LinearLayout>
