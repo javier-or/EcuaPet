@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -39,7 +40,24 @@ public class listadoMascota extends AppCompatActivity {
         setContentView(R.layout.activity_listado_mascota);
        arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,titles);
         list = findViewById(R.id.list);
+
         list.setAdapter(arrayAdapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              String selectedItem = (String) parent.getItemAtPosition(position);
+            //  textView.setText("-----------hola1------- : " + selectedItem);
+
+                String[] parts = selectedItem.split(" ");
+                String part1 = parts[0]; //
+                System.out.println("-----1 hola1------- : " + part1);
+
+                Intent intentEnviar = new Intent(listadoMascota.this, perfil_mascota.class);
+                intentEnviar.putExtra("idMascota", part1);
+                startActivity(intentEnviar);
+
+            }
+        });
 
         hostname = getString(R.string.hostname);
         idUsuario = ((MyApplication) this.getApplication()).getIdUsuario();
@@ -88,7 +106,7 @@ public class listadoMascota extends AppCompatActivity {
             for (int i = 0; i<jsonArr.length();i++){
                 nombre=""; //limpia nueva inserccion
                 JSONObject objeto = jsonArr.getJSONObject(i);
-                nombre +=""+i+" "+objeto.optString("nombre");
+                nombre +=""+objeto.optString("id")+" "+objeto.optString("nombre");
                 // nombre +=objeto.optString("nombre"+"\n");
                 System.out.println("<---------------------------->");
                 System.out.println(nombre);
@@ -111,6 +129,10 @@ public class listadoMascota extends AppCompatActivity {
         }
 
 
+    }
+    public void Selcionar(View v){
+        Intent intentEnviar = new Intent(listadoMascota.this, perfil_mascota.class);
+        startActivity(intentEnviar);
     }
 
 }

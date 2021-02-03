@@ -12,7 +12,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical"
-      tools:context=".miperfil"
+      tools:context=".perfil_mascota"
       tools:ignore="MissingConstraints">
 
   <LinearLayout
@@ -77,22 +77,25 @@
         android:orientation="horizontal">
 
       <TextView
-          android:id="@+id/textVi1111"
+          android:id="@+id/textVi11001"
           android:layout_width="80dp"
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
           android:text="Nombre Mascota: " />
 
+
+
       <EditText
-          android:id="@+id/etNombreM"
-          android:layout_width="231dp"
+          android:id="@+id/etnombreM"
+          android:layout_width="232dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
           android:background="?attr/editTextBackground"
           android:ems="10"
           android:inputType="textPersonName" />
-    </LinearLayout>
+
+         </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,15 +108,15 @@
           android:layout_weight="1"
           android:gravity="center|right"
           android:text="Edad Años: " />
-
       <EditText
-          android:id="@+id/etEdadM"
-          android:layout_width="231dp"
+          android:id="@+id/etedadM"
+          android:layout_width="232dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
           android:background="?attr/editTextBackground"
           android:ems="10"
           android:inputType="textPersonName" />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -129,7 +132,7 @@
           android:text="Meses: " />
 
       <EditText
-          android:id="@+id/etMesesM"
+          android:id="@+id/etmesesM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -151,13 +154,15 @@
           android:text="Raza: " />
 
       <EditText
-          android:id="@+id/etRazaM"
+          android:id="@+id/etrazaM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
           android:background="?attr/editTextBackground"
           android:ems="10"
           android:inputType="textPersonName" />
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -174,7 +179,7 @@
           android:text="Genero: " />
 
       <EditText
-          android:id="@+id/etGeneroM"
+          android:id="@+id/etgeneroM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -182,6 +187,8 @@
           android:ems="10"
           android:inputType="textPersonName" />
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -197,7 +204,7 @@
           android:text="Color: " />
 
       <EditText
-          android:id="@+id/etColorM"
+          android:id="@+id/etcolorM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -219,7 +226,7 @@
           android:text="Alergias: " />
 
       <EditText
-          android:id="@+id/etAlergiasM"
+          android:id="@+id/etalergiasM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -241,7 +248,7 @@
           android:text="Peso: " />
 
       <EditText
-          android:id="@+id/etPezoM"
+          android:id="@+id/etpezoM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -263,7 +270,7 @@
           android:text="Nombre Mascota: " />
 
       <EditText
-          android:id="@+id/etDescripcionM"
+          android:id="@+id/etdescripcionM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -279,32 +286,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-      <Button
-          android:id="@+id/btnAtrasM"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:onClick="atras"
-          android:text="ATRAS"
-          android:background="@drawable/button_rounded"/>
 
 
-      <Button
-          android:id="@+id/btnRegistrarseM"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="10dp"
-          android:onClick="Actualizar"
-          android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
-          android:text="Actualizar"
-          android:background="@drawable/button_rounded"/>
-    </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="90dp"
+      android:gravity="center"
+      android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/btnAtrasM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_rounded"
+        android:onClick="atras"
+        android:text="ATRAS" />
 
 
-  </LinearLayout>
+    <Button
+        android:id="@+id/btnRegistrarseM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+        android:background="@drawable/button_rounded"
+        android:onClick="Actualizar"
+        android:text="Actualizar" />
+
+     </LinearLayout>
+   </LinearLayout>
   </ScrollView>
