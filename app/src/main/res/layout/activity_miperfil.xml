@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:foregroundGravity="bottom">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".miperfil">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,14 +25,16 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="MI PERFIL"
+                android:textColor="#00BCD4"
+                android:textSize="30sp"
+                android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textSize="24sp"
-                android:textStyle="bold"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,16 +45,18 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="30dp"
                 android:text="Foto"
+                android:textColor="#00BCD4"
                 android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/imageProfile"
                 android:layout_width="316dp"
                 android:layout_height="176dp"
+                android:gravity="center_horizontal"
                 android:textAlignment="center"
-                app:srcCompat="@drawable/profile"
-                android:gravity="center_horizontal" />
+                app:srcCompat="@drawable/profile" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,6 +74,7 @@
                 android:src="@drawable/camera" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,7 +86,10 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center|right"
-                android:text="Nombres: " />
+                android:text="Nombres: "
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/etNombres"
@@ -89,8 +98,9 @@
                 android:layout_weight="1"
                 android:background="?attr/editTextBackground"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:hapticFeedbackEnabled="true" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +112,10 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center|right"
-                android:text="Direccion:" />
+                android:text="Direccion:"
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/etDireccion"
@@ -113,6 +126,7 @@
                 android:ems="10"
                 android:inputType="textPersonName" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,7 +138,10 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center|right"
-                android:text="Teléfono: " />
+                android:text="Teléfono: "
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/etTelefono"
@@ -135,6 +152,7 @@
                 android:ems="10"
                 android:inputType="textPersonName" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,7 +164,10 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center|right"
-                android:text="Celular: " />
+                android:text="Celular: "
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/etCelular"
@@ -155,7 +176,7 @@
                 android:layout_weight="1"
                 android:background="?attr/editTextBackground"
                 android:ems="10"
-                android:inputType="textPersonName"/>
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <TextView
@@ -173,7 +194,9 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="30dp"
                 android:text="Ubicación"
-                android:textSize="20sp" />
+                android:textColor="#00BCD4"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView4"
@@ -200,9 +223,9 @@
                 android:id="@+id/btnAtras"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_rounded"
                 android:onClick="atras"
-                android:text="ATRAS"
-                android:background="@drawable/button_rounded"/>
+                android:text="ATRAS" />
 
 
             <Button
@@ -210,10 +233,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:onClick="Actualizar"
                 android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
-                android:text="Actualizar"
-                android:background="@drawable/button_rounded"/>
+                android:background="@drawable/button_rounded"
+                android:onClick="Actualizar"
+                android:text="Actualizar" />
         </LinearLayout>
 
 

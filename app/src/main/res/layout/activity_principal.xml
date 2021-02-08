@@ -6,12 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".Principal">
 
+    <ImageView
+        android:id="@+id/imageVi18"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/login" />
+
     <TextView
         android:id="@+id/nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -19,31 +27,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.376" />
 
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#090909" />
+
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="122dp"
+        android:layout_height="48dp"
         android:layout_marginTop="316dp"
+        android:background="@drawable/button_rounded"
         android:onClick="perfil"
         android:text="Mi Perfil"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/button_rounded"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/mismascotas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="147dp"
+        android:layout_height="41dp"
         android:layout_marginTop="316dp"
+        android:background="@drawable/button_rounded"
         android:onClick="macotas"
         android:text="Mis mascotas"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/button_rounded"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/agregarmascotas"

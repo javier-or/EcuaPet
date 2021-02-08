@@ -41,6 +41,7 @@ public class login extends AppCompatActivity {
         hostname = getString(R.string.hostname);
     }
 
+
     public void getLogin(View v) {
         //UIL Del web service
         String ws = hostname.concat("/login");

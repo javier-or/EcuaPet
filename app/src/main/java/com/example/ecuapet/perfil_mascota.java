@@ -49,7 +49,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class perfil_mascota extends AppCompatActivity implements View.OnClickListener {
-        EditText etnombrem, etedadm, etmesesm, etrazam, etgenerom, etcolorm, etalergiasm, etpesom, etdescripcionm;
+        EditText etnombrem, etedadm, etmesesm,  etcolorm, etalergiasm,  etdescripcionm;
+        Spinner sprazam, spgenerom, sppesom;
         Bundle dato;
         int idMascota;
         ImageView imageProfile;
@@ -67,11 +68,11 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
         etnombrem = findViewById(R.id.etnombreM);
         etedadm = findViewById(R.id.etedadM);
         etmesesm = findViewById(R.id.etmesesM);
-        etrazam = findViewById(R.id.etrazaM);
-        etgenerom = findViewById(R.id.etgeneroM);
+        sprazam = findViewById(R.id.sprazaM);
+        spgenerom = findViewById(R.id.spgeneroM);
         etcolorm = findViewById(R.id.etcolorM);
         etalergiasm = findViewById(R.id.etalergiasM);
-        etpesom = findViewById(R.id.etpezoM);
+        sppesom = findViewById(R.id.sppesoM);
         etdescripcionm = findViewById(R.id.etdescripcionM);
         hostname = getString(R.string.hostname);
         basepath = getString(R.string.basepath);
@@ -84,11 +85,42 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
 
         System.out.println("-----1 hola1------- : " + idMascota);
 
+        String[] arraySpinner = new String[] {
+                "Select One",
+                "Afador","Alaskan Husky","American Bulldog","American Foxhound","American Staffordshire Terrier","American pit bull terrier",
+                "Barbet","Basset Hound","Berger Picard","Beagle","Border Terrier","Braco Alemán","Boxer","Bulldog","Bulldog Francés","Bullmastiff","Bull Terrier",
+                "Cairn Terrier","Castellano","Cesky Fousek","Chihuahua","Chihuahua","Chin Japonés","Chow Chow","Cocker",
+                "Dálmata","Dandie Dinmont Terrier","Dóberman","French Poodle ",
+                "Galgo","Golden Retriever","Gran Boyero Suizo","Gran Danés","Husky Siberiano",
+                "Labradoodle","Labrador Retriever",
+                "Pastor Alemán","Pekinés","Pinscher","Pitbull","Pit bull terrier americano","Poodle","Pointer","Pug o carlino","Rottweiler",
+                "San Bernardo","Schnauzer","Schipperke","Salchicha","Siberian Husky",
+                "Terranova","Terrier","Yorkshire Terrier",
+                "Viejo Pastor Inglés","Yorkshire Terrier"
+        };
+        Spinner s = (Spinner) findViewById(R.id.spMasRaza);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
 
-      
+        String[] arraySpinner1 = new String[]{
+                "Select One", "Macho", "Hembra"
+        };
+        Spinner s1 = (Spinner) findViewById(R.id.spMasGenero);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner1);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s1.setAdapter(adapter1);
+
+        String[] arraySpinner2 = new String[]{
+                "Select One", "1 a 5 Kg", "5 a 10 KG", "10 a 20 KG", "20 a 25 KG", "25 a 30 KG", "30 a 40 KG", "40 a 60 KG", "60 a 80 KG", "80 a 100 KG"
+        };
+        Spinner s2 = (Spinner) findViewById(R.id.spMasPeso);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner2);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s2.setAdapter(adapter2);
 
 
-     /*   if (idMascota > 0) {
+       if (idMascota > 0) {
             new DownloadImageTask((ImageView) findViewById(R.id.imageProfile)).execute(basepath+"/"+dato.getString("foto"));
         } else {
             ContextThemeWrapper ctw = new ContextThemeWrapper(perfil_mascota.this, R.style.Theme_AlertDialog);
@@ -106,7 +138,7 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
             alertDialogBuilder.show();
         }
 
-       imageProfile = (ImageView) findViewById(R.id.imageProfile);*/
+       imageProfile = (ImageView) findViewById(R.id.imageProfile);
 
         getperfil_mascota();
 
@@ -156,14 +188,16 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
             String descripcionM = jsnobject.getString("descripcion");
             // String latitud = jsnobject.getString("latitud");
             // String longitud = jsnobject.getString("longitud");
+
+
             etnombrem.setText(nombreM);
             etedadm.setText(edadM);
             etmesesm.setText(mesesM);
-            etrazam.setText(razaM);
-            etgenerom.setText(generoM);
+            sprazam.getSelectedItem().toString();
+            spgenerom.getSelectedItem().toString();
             etcolorm.setText(colorM);
             etalergiasm.setText(alergiasM);
-            etpesom.setText(pesoM);
+            sppesom.getSelectedItem().toString();
             etdescripcionm.setText(descripcionM);
             System.out.println("<---------------------->");
             System.out.println(nombreM);
@@ -332,11 +366,11 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
                 map.put("nombre",etnombrem.getText().toString());
                 map.put("edad",etedadm.getText().toString());
                 map.put("meses",etmesesm.getText().toString());
-                map.put("raza",etrazam.getText().toString());
-                map.put("genero",etgenerom.getText().toString());
+                map.put("raza",sprazam.getSelectedItem().toString());
+                map.put("genero",spgenerom.getSelectedItem().toString());
                 map.put("color",etcolorm.getText().toString());
                 map.put("alergias",etalergiasm.getText().toString());
-                map.put("peso",etpesom.getText().toString());
+                map.put("peso",sppesom.getSelectedItem().toString());
                 map.put("descripcion",etdescripcionm.getText().toString());
                 map.put(KEY_User_Document1, Document_img1);
                 return map;

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +8,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp">
+
 
   <LinearLayout
       android:layout_width="match_parent"
@@ -26,12 +28,13 @@
         android:background="#FFFFFF"
         android:gravity="center"
         android:text="MI MASCOTA"
+        android:textColor="#00BCD4"
+        android:textSize="26sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="24sp"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
   </LinearLayout>
 
@@ -45,7 +48,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
         android:text="Foto"
-        android:textSize="20sp" />
+        android:textColor="#00BCD4"
+        android:textSize="30sp" />
 
     <ImageView
         android:id="@+id/imageProfile"
@@ -82,7 +86,10 @@
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
-          android:text="Nombre Mascota: " />
+          android:text="Nombre Mascota: "
+          android:textColor="#00BCD4"
+          android:textSize="14sp"
+          android:textStyle="bold|italic" />
 
 
 
@@ -107,7 +114,9 @@
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
-          android:text="Edad Años: " />
+          android:text="Edad Años: "
+          android:textColor="#00BCD4"
+          android:textStyle="bold|italic" />
       <EditText
           android:id="@+id/etedadM"
           android:layout_width="232dp"
@@ -129,7 +138,10 @@
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
-          android:text="Meses: " />
+          android:text="Meses: "
+          android:textColor="#00BCD4"
+          android:textSize="14sp"
+          android:textStyle="bold|italic" />
 
       <EditText
           android:id="@+id/etmesesM"
@@ -151,10 +163,12 @@
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
-          android:text="Raza: " />
+          android:text="Raza: "
+          android:textColor="#00BCD4"
+          android:textStyle="bold|italic" />
 
-      <EditText
-          android:id="@+id/etrazaM"
+      <Spinner
+          android:id="@+id/sprazaM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -176,10 +190,12 @@
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
-          android:text="Genero: " />
+          android:text="Genero: "
+          android:textColor="#00BCD4"
+          android:textStyle="bold|italic" />
 
-      <EditText
-          android:id="@+id/etgeneroM"
+      <Spinner
+          android:id="@+id/spgeneroM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -201,7 +217,9 @@
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
-          android:text="Color: " />
+          android:text="Color: "
+          android:textColor="#00BCD4"
+          android:textStyle="bold|italic" />
 
       <EditText
           android:id="@+id/etcolorM"
@@ -223,7 +241,9 @@
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
-          android:text="Alergias: " />
+          android:text="Alergias: "
+          android:textColor="#00BCD4"
+          android:textStyle="bold|italic" />
 
       <EditText
           android:id="@+id/etalergiasM"
@@ -245,10 +265,12 @@
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
-          android:text="Peso: " />
+          android:text="Peso: "
+          android:textColor="#00BCD4"
+          android:textStyle="bold|italic" />
 
-      <EditText
-          android:id="@+id/etpezoM"
+      <Spinner
+          android:id="@+id/sppesoM"
           android:layout_width="231dp"
           android:layout_height="match_parent"
           android:layout_weight="1"
@@ -267,7 +289,9 @@
           android:layout_height="45dp"
           android:layout_weight="1"
           android:gravity="center|right"
-          android:text="Nombre Mascota: " />
+          android:text="Nombre Mascota: "
+          android:textColor="#00BCD4"
+          android:textStyle="bold|italic" />
 
       <EditText
           android:id="@+id/etdescripcionM"
@@ -287,8 +311,6 @@
         android:layout_height="wrap_content" />
 
 
-
-
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="90dp"
@@ -297,22 +319,28 @@
 
     <Button
         android:id="@+id/btnAtrasM"
-        android:layout_width="wrap_content"
+        android:layout_width="161dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_rounded"
         android:onClick="atras"
-        android:text="ATRAS" />
+        android:text="ATRAS"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 
     <Button
         android:id="@+id/btnRegistrarseM"
-        android:layout_width="wrap_content"
+        android:layout_width="174dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
         android:background="@drawable/button_rounded"
         android:onClick="Actualizar"
-        android:text="Actualizar" />
+        android:text="Actualizar"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
      </LinearLayout>
    </LinearLayout>

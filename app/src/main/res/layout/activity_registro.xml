@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,41 +7,49 @@
     android:orientation="vertical"
     tools:context=".registro">
 
+    <ImageView
+        android:id="@+id/imageVi18"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@drawable/perros6" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="vertical"></LinearLayout>
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="41dp"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:text="REGISTRO"
+            android:text="REGISTRO DEL USUARIO"
+            android:textColor="#00BCD4"
+            android:textSize="30sp"
+            android:textStyle="normal|bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textVi111"
-            android:layout_width="80dp"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:gravity="center|right"
-            android:text="Nombres: " />
+            <TextView
+                android:id="@+id/textVi111"
+                android:layout_width="80dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="Nombres: "
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
         <EditText
             android:id="@+id/etNombres"
@@ -52,6 +60,7 @@
             android:ems="10"
             android:inputType="textPersonName" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,7 +72,11 @@
             android:layout_height="45dp"
             android:layout_weight="1"
             android:gravity="center|right"
-            android:text="Direccion:" />
+            android:text="Dirección:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#00BCD4"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
         <EditText
             android:id="@+id/etDireccion"
@@ -74,6 +87,7 @@
             android:ems="10"
             android:inputType="textPersonName" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -85,7 +99,10 @@
             android:layout_height="45dp"
             android:layout_weight="1"
             android:gravity="center|right"
-            android:text="Teléfono: " />
+            android:text="Teléfono: "
+            android:textColor="#00BCD4"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
         <EditText
             android:id="@+id/etTelefono"
@@ -96,6 +113,7 @@
             android:ems="10"
             android:inputType="textPersonName" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -107,7 +125,10 @@
             android:layout_height="45dp"
             android:layout_weight="1"
             android:gravity="center|right"
-            android:text="Celular: " />
+            android:text="Celular: "
+            android:textColor="#00BCD4"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
         <EditText
             android:id="@+id/etCelular"
@@ -116,8 +137,9 @@
             android:layout_weight="1"
             android:background="?attr/editTextBackground"
             android:ems="10"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -129,7 +151,10 @@
             android:layout_height="45dp"
             android:layout_weight="1"
             android:gravity="center|right"
-            android:text="Email: " />
+            android:text="Email: "
+            android:textColor="#00BCD4"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -140,10 +165,11 @@
             android:ems="10"
             android:inputType="textPersonName" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textVi116"
@@ -151,7 +177,11 @@
             android:layout_height="45dp"
             android:layout_weight="1"
             android:gravity="center|right"
-            android:text="Contraseña:" />
+            android:text="Contraseña:"
+            android:textAllCaps="false"
+            android:textColor="#00BCD4"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
         <EditText
             android:id="@+id/etContraseña"
@@ -161,10 +191,11 @@
             android:ems="10"
             android:inputType="textPassword" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textVi117"
@@ -172,7 +203,10 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center|right"
-            android:text="Confirmar Contraseña:" />
+            android:text="Confirmar Contraseña:"
+            android:textColor="#00BCD4"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
         <EditText
             android:id="@+id/etConfirmarContraseña"
@@ -193,36 +227,53 @@
         android:id="@+id/textVi118"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/textVi138"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/textVi119"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnAtras"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="volver"
-            android:text="ATRAS"
-            android:background="@drawable/button_rounded"/>
+        android:orientation="horizontal" />
 
 
         <Button
             android:id="@+id/btnRegistrarse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_width="188dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:background="@drawable/button_rounded"
             android:onClick="Registrar"
             android:text="REGISTRARSE"
-            android:background="@drawable/button_rounded"/>
-    </LinearLayout>
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textVi1118"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/btnAtras"
+            android:layout_width="190dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+            android:background="@drawable/button_rounded"
+            android:minHeight="05dp"
+            android:onClick="volver"
+            android:text="ATRAS"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+
+        </LinearLayout>
+
+</RelativeLayout>

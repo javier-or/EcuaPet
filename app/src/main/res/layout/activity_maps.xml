@@ -24,12 +24,13 @@
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="MI PERFIL"
+                android:textColor="#00BCD4"
+                android:textSize="30sp"
+                android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textSize="24sp"
-                android:textStyle="bold"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
         <LinearLayout
@@ -42,7 +43,9 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="30dp"
                 android:text="Foto"
-                android:textSize="20sp" />
+                android:textColor="#00BCD4"
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
 
             <ImageView
                 android:id="@+id/imageProfile"
@@ -79,7 +82,10 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center|right"
-                android:text="Nombres: " />
+                android:text="Nombres: "
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/etNombres"
@@ -101,7 +107,10 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center|right"
-                android:text="Direccion:" />
+                android:text="Direccion:"
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/etDireccion"
@@ -123,7 +132,10 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center|right"
-                android:text="Teléfono: " />
+                android:text="Teléfono: "
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/etTelefono"
@@ -145,7 +157,10 @@
                 android:layout_height="45dp"
                 android:layout_weight="1"
                 android:gravity="center|right"
-                android:text="Celular: " />
+                android:text="Celular: "
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/etCelular"
@@ -197,22 +212,28 @@
 
             <Button
                 android:id="@+id/btnAtras"
-                android:layout_width="wrap_content"
+                android:layout_width="132dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_rounded"
                 android:onClick="atras"
                 android:text="ATRAS"
-                android:background="@drawable/button_rounded"/>
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
 
             <Button
                 android:id="@+id/btnRegistrarse"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:onClick="Actualizar"
                 android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+                android:background="@drawable/button_rounded"
+                android:onClick="Actualizar"
                 android:text="Actualizar"
-                android:background="@drawable/button_rounded"/>
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 

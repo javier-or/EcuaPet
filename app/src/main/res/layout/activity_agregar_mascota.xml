@@ -7,6 +7,8 @@
     android:layout_marginRight="15dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,8 +26,9 @@
                 android:paddingTop="10dp"
                 android:text="Nueva Mascota"
                 android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold"/>
+                android:textColor="#00BCD4"
+                android:textSize="30sp"
+                android:textStyle="bold|italic" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -37,7 +40,9 @@
                     android:layout_height="match_parent"
                     android:paddingTop="30dp"
                     android:text="Foto"
-                    android:textSize="20sp" />
+                    android:textColor="#00BCD4"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imageProfile"
@@ -76,7 +81,9 @@
                     android:layout_height="wrap_content"
                     android:paddingRight="30dp"
                     android:text="Nombre"
-                    android:textSize="18sp" />
+                    android:textColor="#00BCD4"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/etMasNombre"
@@ -112,7 +119,9 @@
                 android:layout_weight="1"
                 android:paddingRight="25dp"
                 android:text="Edad Años"
-                android:textSize="16dp" />
+                android:textColor="#00BCD4"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
 
 
@@ -133,7 +142,9 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp"
                 android:text="Meses"
-                android:textSize="18sp" />
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/etMasMeses"
@@ -157,7 +168,9 @@
                 android:layout_weight="1"
                 android:paddingRight="35dp"
                 android:text="Raza"
-                android:textSize="18sp" />
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spMasRaza"
@@ -182,7 +195,9 @@
                 android:layout_weight="1"
                 android:paddingRight="35dp"
                 android:text="Genero"
-                android:textSize="16dp" />
+                android:textColor="#00BCD4"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spMasGenero"
@@ -208,7 +223,9 @@
                 android:layout_weight="1"
                 android:paddingRight="30dp"
                 android:text="Color"
-                android:textSize="18sp" />
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/etMasColor"
@@ -235,7 +252,9 @@
                 android:layout_weight="1"
                 android:paddingRight="30dp"
                 android:text="Alergias"
-                android:textSize="16dp" />
+                android:textColor="#00BCD4"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/etMasAlergias"
@@ -263,7 +282,9 @@
                 android:layout_weight="1"
                 android:paddingRight="35dp"
                 android:text="Peso"
-                android:textSize="18sp" />
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spMasPeso"
@@ -288,7 +309,9 @@
                 android:layout_weight="1"
                 android:paddingRight="30dp"
                 android:text="Descripcion"
-                android:textSize="16dp" />
+                android:textColor="#00BCD4"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/etMasDescripcion"
@@ -311,31 +334,32 @@
 
             <Button
                 android:id="@+id/btnVolver"
-                android:layout_width="150dp"
-                android:layout_height="43dp"
-                android:layout_marginLeft="60dp"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/button_rounded"
                 android:drawableStart="@drawable/casita"
                 android:drawableLeft="@drawable/casita"
                 android:gravity="center"
                 android:onClick="volver"
                 android:text="Volver"
-                android:textSize="12sp"
-                android:background="@drawable/button_rounded"/>
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/btnGuardar"
-                android:layout_width="150dp"
-                android:layout_height="43dp"
+                android:layout_width="201dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
+                android:background="@drawable/button_rounded"
                 android:drawableStart="@drawable/guardar"
                 android:drawableLeft="@drawable/guardar"
                 android:gravity="center"
                 android:onClick="GuardarMasc"
                 android:text="Guardar"
-                android:textSize="12sp"
-                android:background="@drawable/button_rounded"/>
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
 
         </LinearLayout>
