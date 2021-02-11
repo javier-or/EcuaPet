@@ -56,6 +56,7 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
         ImageView imageProfile;
         String hostname;
         String basepath;
+        ArrayAdapter<String> adapter, adapter1, adapter2;
 
     public static final String KEY_User_Document1 = "image";
     private String Document_img1 = "";
@@ -83,7 +84,6 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
        idMascota = Integer.parseInt(dato.getString("idMascota"));  //Convierto en de string a int
      // idMascota = ((MyApplication) this.getApplication()).getIdMascota();
 
-        System.out.println("-----1 hola1------- : " + idMascota);
 
         String[] arraySpinner = new String[] {
                 "Select One",
@@ -98,24 +98,24 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
                 "Terranova","Terrier","Yorkshire Terrier",
                 "Viejo Pastor Inglés","Yorkshire Terrier"
         };
-        Spinner s = (Spinner) findViewById(R.id.spMasRaza);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner);
+        Spinner s = (Spinner) findViewById(R.id.sprazaM);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
 
         String[] arraySpinner1 = new String[]{
                 "Select One", "Macho", "Hembra"
         };
-        Spinner s1 = (Spinner) findViewById(R.id.spMasGenero);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner1);
+        Spinner s1 = (Spinner) findViewById(R.id.spgeneroM);
+        adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner1);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s1.setAdapter(adapter1);
 
         String[] arraySpinner2 = new String[]{
                 "Select One", "1 a 5 Kg", "5 a 10 KG", "10 a 20 KG", "20 a 25 KG", "25 a 30 KG", "30 a 40 KG", "40 a 60 KG", "60 a 80 KG", "80 a 100 KG"
         };
-        Spinner s2 = (Spinner) findViewById(R.id.spMasPeso);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner2);
+        Spinner s2 = (Spinner) findViewById(R.id.sppesoM);
+        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner2);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s2.setAdapter(adapter2);
 
@@ -193,12 +193,16 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
             etnombrem.setText(nombreM);
             etedadm.setText(edadM);
             etmesesm.setText(mesesM);
-            sprazam.getSelectedItem().toString();
-            spgenerom.getSelectedItem().toString();
+            int spinnerPosition = adapter.getPosition(razaM);
+            sprazam.setSelection(spinnerPosition);
+            int spinnerPosition1 = adapter1.getPosition(generoM);
+            spgenerom.setSelection(spinnerPosition1);
             etcolorm.setText(colorM);
             etalergiasm.setText(alergiasM);
-            sppesom.getSelectedItem().toString();
+            int spinnerPosition2 = adapter2.getPosition(pesoM);
+            sppesom.setSelection(spinnerPosition2);;
             etdescripcionm.setText(descripcionM);
+
             System.out.println("<---------------------->");
             System.out.println(nombreM);
 
