@@ -10,9 +10,9 @@
         android:id="@+id/imageVi18"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#00BCD4"
+        android:background="#FFFFFF"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/perros8" />
+        app:srcCompat="@drawable/perros6" />
 
     <TextView
         android:id="@+id/nombre"

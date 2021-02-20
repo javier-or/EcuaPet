@@ -1,6 +1,7 @@
 package com.example.ecuapet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -221,7 +222,18 @@ public class agregarMascota extends AppCompatActivity implements View.OnClickLis
                 if (options[item].equals("Tomar foto")) {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                    try{
+                        Uri imageUri = FileProvider.getUriForFile(
+                                agregarMascota.this,
+                                "com.example.ecuapet.provider", //(use your app signature + ".provider" )
+                                f);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                        // intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                    }catch(Error er){
+                        System.out.println(er.getMessage());
+                    }
+
+
                     startActivityForResult(intent, 1);
                 } else if (options[item].equals("Escoger de Galería")) {
                     Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
