@@ -1,15 +1,22 @@
 package com.example.ecuapet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -39,9 +46,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -89,10 +100,12 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
                 "Select One",
                 "Afador","Alaskan Husky","American Bulldog","American Foxhound","American Staffordshire Terrier","American pit bull terrier",
                 "Barbet","Basset Hound","Berger Picard","Beagle","Border Terrier","Braco Alemán","Boxer","Bulldog","Bulldog Francés","Bullmastiff","Bull Terrier",
-                "Cairn Terrier","Castellano","Cesky Fousek","Chihuahua","Chihuahua","Chin Japonés","Chow Chow","Cocker",
+                "Castellano","Cairn Terrier","Castellano","Cesky Fousek","Chihuahua","Chihuahua","Chin Japonés","Chow Chow","Cocker",
                 "Dálmata","Dandie Dinmont Terrier","Dóberman","French Poodle ",
                 "Galgo","Golden Retriever","Gran Boyero Suizo","Gran Danés","Husky Siberiano",
+                "French",
                 "Labradoodle","Labrador Retriever",
+                "Mestiso",
                 "Pastor Alemán","Pekinés","Pinscher","Pitbull","Pit bull terrier americano","Poodle","Pointer","Pug o carlino","Rottweiler",
                 "San Bernardo","Schnauzer","Schipperke","Salchicha","Siberian Husky",
                 "Terranova","Terrier","Yorkshire Terrier",
@@ -120,23 +133,7 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
         s2.setAdapter(adapter2);
 
 
-       if (idMascota > 0) {
-            new DownloadImageTask((ImageView) findViewById(R.id.imageProfile)).execute(basepath+"/"+dato.getString("foto"));
-        } else {
-            ContextThemeWrapper ctw = new ContextThemeWrapper(perfil_mascota.this, R.style.Theme_AlertDialog);
-            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctw);
-            alertDialogBuilder.setTitle("Error");
-            alertDialogBuilder.setCancelable(false);
-            alertDialogBuilder.setMessage("No se envió el enlace de usuario");
-            alertDialogBuilder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    Intent intent = new Intent(perfil_mascota.this, Principal.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-            alertDialogBuilder.show();
-        }
+
 
        imageProfile = (ImageView) findViewById(R.id.imageProfile);
 
@@ -186,6 +183,7 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
             String alergiasM = jsnobject.getString("alergias");
             String pesoM = jsnobject.getString("peso");
             String descripcionM = jsnobject.getString("descripcion");
+            String foto =jsnobject.getString("foto");
             // String latitud = jsnobject.getString("latitud");
             // String longitud = jsnobject.getString("longitud");
 
@@ -202,6 +200,11 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
             int spinnerPosition2 = adapter2.getPosition(pesoM);
             sppesom.setSelection(spinnerPosition2);;
             etdescripcionm.setText(descripcionM);
+
+
+            new DownloadImageTask((ImageView) findViewById(R.id.imageProfile)).execute(basepath+ "/" +  foto );
+
+
 
             System.out.println("<---------------------->");
             System.out.println(nombreM);
@@ -227,7 +230,18 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
                 if (options[item].equals("Tomar foto")) {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                    try{
+                        Uri imageUri = FileProvider.getUriForFile(
+                                perfil_mascota.this,
+                                "com.example.ecuapet.provider", //(use your app signature + ".provider" )
+                                f);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                        // intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                    }catch(Error er){
+                        System.out.println(er.getMessage());
+                    }
+
+
                     startActivityForResult(intent, 1);
                 } else if (options[item].equals("Escoger de Galería")) {
                     Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -240,13 +254,96 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
         builder.show();
     }
 
-    public void SendDetail() {
+
+    @SuppressLint("LongLogTag")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 1) {
+                File f = new File(Environment.getExternalStorageDirectory().toString());
+                for (File temp : f.listFiles()) {
+                    if (temp.getName().equals("temp.jpg")) {
+                        f = temp;
+                        break;
+                    }
+                }
+                try {
+                    Bitmap bitmap;
+                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+                    bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), bitmapOptions);
+                    bitmap = getResizedBitmap(bitmap, 400);
+                    imageProfile.setImageBitmap(bitmap);
+                    BitMapToString(bitmap);
+                    String path = android.os.Environment
+                            .getExternalStorageDirectory()
+                            + File.separator
+                            + "Phoenix" + File.separator + "default";
+                    f.delete();
+                    OutputStream outFile = null;
+                    File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
+                    try {
+                        outFile = new FileOutputStream(file);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
+                        outFile.flush();
+                        outFile.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (requestCode == 2) {
+                Uri selectedImage = data.getData();
+                String[] filePath = {MediaStore.Images.Media.DATA};
+                Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
+                c.moveToFirst();
+                int columnIndex = c.getColumnIndex(filePath[0]);
+                String picturePath = c.getString(columnIndex);
+                c.close();
+                Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+                thumbnail = getResizedBitmap(thumbnail, 400);
+                Log.w("path of image from gallery......******************.........", picturePath + "");
+                imageProfile.setImageBitmap(thumbnail);
+                BitMapToString(thumbnail);
+            }
+        }
+    }
+
+    public String BitMapToString(Bitmap userImage1) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
+        byte[] b = baos.toByteArray();
+        Document_img1 = Base64.encodeToString(b, Base64.DEFAULT);
+        return Document_img1;
+    }
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+    public void ActualizarMasc(View v) {
         final ProgressDialog loading = new ProgressDialog(perfil_mascota.this);
         loading.setMessage("Espere...");
         loading.show();
         loading.setCanceledOnTouchOutside(false);
         RetryPolicy mRetryPolicy = new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, hostname + "/user/"+idMascota,
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, hostname + "/mascota/" + idMascota ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -261,10 +358,10 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
                                 String error_msg = eventObject.getString("msg");
                                 ContextThemeWrapper ctw = new ContextThemeWrapper(perfil_mascota.this, R.style.Theme_AlertDialog);
                                 final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctw);
-                                alertDialogBuilder.setTitle("Vendor Detail");
+                                alertDialogBuilder.setTitle("Error en el servidor");
                                 alertDialogBuilder.setCancelable(false);
                                 alertDialogBuilder.setMessage(error_msg);
-                                alertDialogBuilder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
 
                                     }
@@ -273,7 +370,6 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
 
                             } else {
                                 String error_msg = eventObject.getString("msg");
-                                final String nombre = eventObject.getString("nombre");
                                 ContextThemeWrapper ctw = new ContextThemeWrapper(perfil_mascota.this, R.style.Theme_AlertDialog);
                                 final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctw);
 
@@ -281,12 +377,16 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
                                 alertDialogBuilder.setCancelable(false);
                                 alertDialogBuilder.setMessage(error_msg);
 
+                                final String idMascota = eventObject.getString("idMascota");
+                                final String nombre = eventObject.getString("nombre");
 //                                alertDialogBuilder.setIcon(R.drawable.doubletick);
+
                                 alertDialogBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        Intent intent = new Intent(perfil_mascota.this, Principal.class);
-                                        intent.putExtra("idUsuario", idMascota);
-                                        startActivity(intent);
+                                        Intent ide = new Intent(perfil_mascota.this, confirmacionGuardado.class);
+                                        ide.putExtra("idMascota", idMascota);
+                                        ide.putExtra("nombre", nombre);
+                                        startActivity(ide);
                                         finish();
                                     }
                                 });
@@ -367,15 +467,16 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<String, String>();
-                map.put("nombre",etnombrem.getText().toString());
-                map.put("edad",etedadm.getText().toString());
-                map.put("meses",etmesesm.getText().toString());
-                map.put("raza",sprazam.getSelectedItem().toString());
-                map.put("genero",spgenerom.getSelectedItem().toString());
-                map.put("color",etcolorm.getText().toString());
-                map.put("alergias",etalergiasm.getText().toString());
-                map.put("peso",sppesom.getSelectedItem().toString());
-                map.put("descripcion",etdescripcionm.getText().toString());
+
+                map.put("nombre", etnombrem.getText().toString());
+                map.put("edad_anios", etedadm.getText().toString());
+                map.put("edad_meses", etmesesm.getText().toString());
+                map.put("raza", sprazam.getSelectedItem().toString());
+                map.put("genero", spgenerom.getSelectedItem().toString());
+                map.put("color", etcolorm.getText().toString());
+                map.put("alergias", etalergiasm.getText().toString());
+                map.put("peso", sppesom.getSelectedItem().toString());
+                map.put("descripcion", etdescripcionm.getText().toString());
                 map.put(KEY_User_Document1, Document_img1);
                 return map;
             }
@@ -385,6 +486,9 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
         stringRequest.setRetryPolicy(mRetryPolicy);
         requestQueue.add(stringRequest);
     }
+
+
+
 
     @Override
     public void onClick(View v) {
