@@ -32,7 +32,8 @@
         android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:text=""
-        android:textColor="#090909" />
+        android:textColor="#090909"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button3"

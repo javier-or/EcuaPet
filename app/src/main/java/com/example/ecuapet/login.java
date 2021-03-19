@@ -37,7 +37,7 @@ public class login extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etcontrase = findViewById(R.id.etPassword);
         registrarse = findViewById(R.id.Registrarse);
-        olvidoPassword = findViewById(R.id.olvidoPassword);
+       // olvidoPassword = findViewById(R.id.olvidoPassword);
         hostname = getString(R.string.hostname);
     }
 
