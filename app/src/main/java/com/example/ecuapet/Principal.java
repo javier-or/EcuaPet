@@ -50,7 +50,7 @@ public class Principal extends AppCompatActivity {
 
     public void perfil(View v) {
 
-        Intent intentEnviar = new Intent(Principal.this, MapsActivity.class);
+        Intent intentEnviar = new Intent(Principal.this, miperfil.class);
         intentEnviar.putExtra("foto",foto);
         startActivity(intentEnviar);
 

@@ -106,7 +106,7 @@ public class listadoMascota extends AppCompatActivity {
             for (int i = 0; i<jsonArr.length();i++){
                 nombre=""; //limpia nueva inserccion
                 JSONObject objeto = jsonArr.getJSONObject(i);
-                nombre += objeto.optString("nombre");
+                nombre +=""+objeto.optString("id")+" "+objeto.optString("nombre");
                 // nombre +=objeto.optString("nombre"+"\n");
                 System.out.println("<---------------------------->");
                 System.out.println(nombre);
@@ -132,6 +132,7 @@ public class listadoMascota extends AppCompatActivity {
     }
     public void Selcionar(View v){
         Intent intentEnviar = new Intent(listadoMascota.this, perfil_mascota.class);
+
         startActivity(intentEnviar);
     }
 

@@ -63,7 +63,7 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
         EditText etnombrem, etedadm, etmesesm,  etcolorm, etalergiasm,  etdescripcionm;
         Spinner sprazam, spgenerom, sppesom;
         Bundle dato;
-        int idMascota;
+        String idMascota;
         ImageView imageProfile;
         String hostname;
         String basepath;
@@ -92,24 +92,22 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
         dato = getIntent().getExtras();
         System.out.println("-----1 hola2------- : " +(dato.getString("idMascota")) );
 
-       idMascota = Integer.parseInt(dato.getString("idMascota"));  //Convierto en de string a int
+       idMascota = dato.getString("idMascota");  //Convierto en de string a int
      // idMascota = ((MyApplication) this.getApplication()).getIdMascota();
 
 
         String[] arraySpinner = new String[] {
                 "Select One",
-                "Afador","Alaskan Husky","American Bulldog","American Foxhound","American Staffordshire Terrier","American pit bull terrier",
-                "Barbet","Basset Hound","Berger Picard","Beagle","Border Terrier","Braco Alemán","Boxer","Bulldog","Bulldog Francés","Bullmastiff","Bull Terrier",
-                "Castellano","Cairn Terrier","Castellano","Cesky Fousek","Chihuahua","Chihuahua","Chin Japonés","Chow Chow","Cocker",
-                "Dálmata","Dandie Dinmont Terrier","Dóberman","French Poodle ",
+                "Afador","American Bulldog","American Staffordshire Terrier",
+                "Barbet","Beagle","Border Terrier","Boxer","Bulldog","Bull Terrier",
+                "Castellano","Cairn Terrier","Chihuahua","Chihuahua","Chow Chow","Cocker",
+                "Dálmata","Dóberman","French Poodle ",
                 "Galgo","Golden Retriever","Gran Boyero Suizo","Gran Danés","Husky Siberiano",
-                "French",
-                "Labradoodle","Labrador Retriever",
-                "Mestiso",
-                "Pastor Alemán","Pekinés","Pinscher","Pitbull","Pit bull terrier americano","Poodle","Pointer","Pug o carlino","Rottweiler",
+                "French","Labrador Retriever","Mestiso",
+                "Pastor Alemán","Pekinés","Pinscher","Pitbull","Pit bull terrier americano","Poodle","Pointer","Rottweiler",
                 "San Bernardo","Schnauzer","Schipperke","Salchicha","Siberian Husky",
                 "Terranova","Terrier","Yorkshire Terrier",
-                "Viejo Pastor Inglés","Yorkshire Terrier"
+
         };
         Spinner s = (Spinner) findViewById(R.id.sprazaM);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySpinner);
@@ -144,7 +142,7 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
     public void getperfil_mascota() {
         //UIL Del web service
         String ws = hostname.concat("/mascota/");
-        ws = ws.concat(Integer.toString(idMascota));
+        ws = ws.concat(idMascota);
 
         //Permisos de la aplicacion
         StrictMode.ThreadPolicy politica = new StrictMode.ThreadPolicy.Builder().permitAll().build();

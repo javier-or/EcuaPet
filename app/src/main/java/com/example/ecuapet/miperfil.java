@@ -87,10 +87,26 @@ public class miperfil extends AppCompatActivity implements View.OnClickListener 
         dato = getIntent().getExtras();
         idUsuario = ((MyApplication) this.getApplication()).getIdUsuario();
 
-        idUsuario = Integer.parseInt(dato.getString("idUsuario"));  //Convierto en de string a int
+        if (idUsuario > 0) {
+            new DownloadImageTask((ImageView) findViewById(R.id.imageProfile)).execute(basepath+"/"+dato.getString("foto"));
+        } else {
+            ContextThemeWrapper ctw = new ContextThemeWrapper(miperfil.this, R.style.Theme_AlertDialog);
+            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctw);
+            alertDialogBuilder.setTitle("Error");
+            alertDialogBuilder.setCancelable(false);
+            alertDialogBuilder.setMessage("No se envió el enlace de usuario");
+            alertDialogBuilder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Intent intent = new Intent(miperfil.this, Principal.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            alertDialogBuilder.show();
+        }
 
-        
         imageProfile = (ImageView) findViewById(R.id.imageProfile);
+
         getMiperfil();
 
     }
@@ -133,20 +149,14 @@ public class miperfil extends AppCompatActivity implements View.OnClickListener 
             String dir = jsnobject.getString("direccion");
             String tel = jsnobject.getString("telefono");
             String cel = jsnobject.getString("celular");
-            String foto =jsnobject.getString("foto");
             // String latitud = jsnobject.getString("latitud");
             // String longitud = jsnobject.getString("longitud");
-
             etnom.setText(nom);
             etdir.setText(dir);
             ettel.setText(tel);
             etcel.setText(cel);
-            new DownloadImageTask((ImageView) findViewById(R.id.imageProfile)).execute(basepath+ "/" +  foto );
-
             System.out.println("<---------------------->");
             System.out.println(nom);
-
-
 
         } catch (MalformedURLException e) {
             Toast.makeText(getApplicationContext(), "ERROR " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -179,8 +189,6 @@ public class miperfil extends AppCompatActivity implements View.OnClickListener 
                     }catch(Error er){
                         System.out.println(er.getMessage());
                     }
-
-
                     startActivityForResult(intent, 1);
                 } else if (options[item].equals("Escoger de Galería")) {
                     Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -252,36 +260,36 @@ public class miperfil extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-        public String BitMapToString(Bitmap userImage1) {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
-            byte[] b = baos.toByteArray();
-            Document_img1 = Base64.encodeToString(b, Base64.DEFAULT);
+    public String BitMapToString(Bitmap userImage1) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
+        byte[] b = baos.toByteArray();
+        Document_img1 = Base64.encodeToString(b, Base64.DEFAULT);
         return Document_img1;
     }
 
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
-            int width = image.getWidth();
-            int height = image.getHeight();
+        int width = image.getWidth();
+        int height = image.getHeight();
 
-            float bitmapRatio = (float) width / (float) height;
-            if (bitmapRatio > 1) {
-                width = maxSize;
-                height = (int) (width / bitmapRatio);
-            } else {
-                height = maxSize;
-                width = (int) (height * bitmapRatio);
-            }
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
-        public void SendDetail() {
-              final ProgressDialog loading = new ProgressDialog(miperfil.this);
-              loading.setMessage("Espere...");
-              loading.show();
-              loading.setCanceledOnTouchOutside(false);
-              RetryPolicy mRetryPolicy = new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-              StringRequest stringRequest = new StringRequest(Request.Method.PUT, hostname + "/user/"+idUsuario,
+    public void SendDetail() {
+        final ProgressDialog loading = new ProgressDialog(miperfil.this);
+        loading.setMessage("Espere...");
+        loading.show();
+        loading.setCanceledOnTouchOutside(false);
+        RetryPolicy mRetryPolicy = new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, hostname + "/user/"+idUsuario,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
