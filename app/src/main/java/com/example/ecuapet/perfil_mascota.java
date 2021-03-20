@@ -106,7 +106,7 @@ public class perfil_mascota extends AppCompatActivity implements View.OnClickLis
                 "French","Labrador Retriever","Mestiso",
                 "Pastor Alemán","Pekinés","Pinscher","Pitbull","Pit bull terrier americano","Poodle","Pointer","Rottweiler",
                 "San Bernardo","Schnauzer","Schipperke","Salchicha","Siberian Husky",
-                "Terranova","Terrier","Yorkshire Terrier",
+                "Terranova","Terrier","Yorkshire Terrier"
 
         };
         Spinner s = (Spinner) findViewById(R.id.sprazaM);

@@ -38,7 +38,13 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,7 +63,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class miperfil extends AppCompatActivity implements View.OnClickListener {
+public class miperfil extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
     EditText etnom, etdir, ettel, etcel, etmai;
     Bundle dato;
     int idUsuario;
@@ -67,8 +73,13 @@ public class miperfil extends AppCompatActivity implements View.OnClickListener 
     String hostname;
     String basepath;
 
+    double latitud;
+    double longitud;
+
     public static final String KEY_User_Document1 = "image";
     private String Document_img1 = "";
+
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +120,9 @@ public class miperfil extends AppCompatActivity implements View.OnClickListener 
 
         getMiperfil();
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
 
@@ -149,12 +163,16 @@ public class miperfil extends AppCompatActivity implements View.OnClickListener 
             String dir = jsnobject.getString("direccion");
             String tel = jsnobject.getString("telefono");
             String cel = jsnobject.getString("celular");
+            latitud = Double.parseDouble(jsnobject.getString("latitud"));
+            longitud = Double.parseDouble(jsnobject.getString("longitud"));
+
             // String latitud = jsnobject.getString("latitud");
             // String longitud = jsnobject.getString("longitud");
             etnom.setText(nom);
             etdir.setText(dir);
             ettel.setText(tel);
             etcel.setText(cel);
+
             System.out.println("<---------------------->");
             System.out.println(nom);
 
@@ -414,6 +432,8 @@ public class miperfil extends AppCompatActivity implements View.OnClickListener 
                 map.put("direccion",etdir.getText().toString());
                 map.put("telefono",ettel.getText().toString());
                 map.put("celular",etcel.getText().toString());
+                map.put("latitud", String.valueOf(latitud));
+                map.put("longitud", String.valueOf(longitud));
                 map.put(KEY_User_Document1, Document_img1);
                 return map;
             }
@@ -449,6 +469,37 @@ public class miperfil extends AppCompatActivity implements View.OnClickListener 
 //
 //        }
     }
+
+
+
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(latitud, longitud);
+//        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Ubicación del Propietario"));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney,14.0f));
+        mMap.setMyLocationEnabled(true);
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            public void onMapClick(LatLng point) {
+                // Drawing marker on the map
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(point);
+                markerOptions.title(point.latitude + " : " + point.longitude);
+                mMap.clear();
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(point));
+                mMap.addMarker(markerOptions);
+                // Create location object
+                latitud = point.latitude;
+                longitud = point.longitude;
+//                Location location = new Location(point.latitude, point.longitude);
+                // add location to SQLite database
+//                locationsDB.insert(location);
+            }
+        });
+    }
+
 
     public void atras(View v){
         Intent intentEnviar = new Intent(miperfil.this, Principal.class);

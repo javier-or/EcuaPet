@@ -100,14 +100,15 @@ public class agregarMascota extends AppCompatActivity implements View.OnClickLis
         imageProfile = (ImageView) findViewById(R.id.imageProfile);
 
         String[] arraySpinner = new String[] {
-                "Select One","Afador","Alaskan Husky","American Bulldog","American Foxhound","American Staffordshire Terrier",
-                "Barbet","Basset Hound","Berger Picard","Border Terrier","Braco Alemán","Bulldog Francés","Bulldog Inglés","Bullmastiff","Bull Terrier",
-                "Cairn Terrier","Chihuahua","Chin Japonés","Chow Chow","Cocker",
-                "Dálmata","Dandie Dinmont Terrier","Dóberman",
+                "Select One",
+                "Afador","American Bulldog","American Staffordshire Terrier",
+                "Barbet","Beagle","Border Terrier","Boxer","Bulldog","Bull Terrier",
+                "Castellano","Cairn Terrier","Chihuahua","Chihuahua","Chow Chow","Cocker",
+                "Dálmata","Dóberman","French Poodle ",
                 "Galgo","Golden Retriever","Gran Boyero Suizo","Gran Danés","Husky Siberiano",
-                "Labradoodle","Labrador Retriever",
-                "Pastor Alemán","Pekinés","Pinscher","Pitbull","Pit bull terrier americano","Pug o carlino","Rottweiler",
-                "San Bernardo","Schnauzer","Schipperke",
+                "French","Labrador Retriever","Mestiso",
+                "Pastor Alemán","Pekinés","Pinscher","Pitbull","Pit bull terrier americano","Poodle","Pointer","Rottweiler",
+                "San Bernardo","Schnauzer","Schipperke","Salchicha","Siberian Husky",
                 "Terranova","Terrier","Yorkshire Terrier"
         };
         Spinner s = (Spinner) findViewById(R.id.spMasRaza);
